@@ -12,31 +12,38 @@ const NewCompanion = async () => {
   const canCreateCompanion = await newCompanionPermissions();
 
   return (
-    <main className="min-lg:w-1/3 min-md:w-2/3 items-center justify-center flex flex-col gap-8">
-      {/* Always show the Companion Builder form */}
-      <article className="w-full gap-4 flex flex-col">
-        <h1>Companion Builder</h1>
-        <CompanionForm />
-      </article>
+    <main className="container mx-auto px-4 py-8">
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Left side: Companion Builder Form */}
+        <article className="w-full lg:w-1/2 flex flex-col gap-4">
+          <h1 className="text-2xl font-bold">Companion Builder</h1>
+          <CompanionForm />
+        </article>
 
-      {/* Always show the Upgrade section */}
-      <article className="companion-limit text-center flex flex-col items-center gap-4">
-        <Image
-          src="/images/limit.svg"
-          alt="Companion limit reached"
-          width={360}
-          height={230}
-        />
-        <div className="cta-badge">Upgrade your plan</div>
-        <h1>You’ve Reached Your Limit</h1>
-        <p>
-          You’ve reached your companion limit. Upgrade to create more companions
-          and access premium features.
-        </p>
-        <Link href="/subscription" className="btn-primary w-full justify-center">
-          Upgrade My Plan
-        </Link>
-      </article>
+        {/* Right side: Upgrade Section */}
+        <article className="w-full lg:w-1/2 companion-limit flex flex-col items-center gap-4 text-center">
+          <Image
+            src="/images/limit.svg"
+            alt="Companion limit reached"
+            width={360}
+            height={230}
+          />
+          <div className="cta-badge bg-blue-500 text-white px-4 py-2 rounded-full">
+            Upgrade your plan
+          </div>
+          <h1 className="text-2xl font-bold">You’ve Reached Your Limit</h1>
+          <p className="text-gray-600">
+            You’ve reached your companion limit. Upgrade to create more companions
+            and access premium features.
+          </p>
+          <Link 
+            href="/subscription" 
+            className="btn-primary w-full lg:w-3/4 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+          >
+            Upgrade My Plan
+          </Link>
+        </article>
+      </div>
     </main>
   );
 };
